@@ -8,6 +8,7 @@
 
 > **特别注意**：请于完成后，将项目源码更新至候选者您本人的Github，在您项目的**Settings**页面，例如本项目为此[链接](https://github.com/alaahong/open_test_class/settings/access) ，将您的项目设置为**Private Repository**以免借阅, 并于**Manage access**邀请**alaahong**作为协作者(collaborator)后，发起[issue](https://github.com/alaahong/open_test_class/issues)声明您的项目链接，并最终反馈给HR/Vendor/猎头等渠道 
 
+> 这么简单直白的需求，没必要网上随便找个开源的项目扒代码，面试者自行决定实现的程度。硬要扒的话，面试的时候会加深项目设计和实现方面的细节询问，无法自圆其说的话，按捉刀代笔处理。
 
 
 * 请**Fork**本项目到您自己的Github账号下
