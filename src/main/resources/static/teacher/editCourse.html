@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>编辑课程</title>
+<link rel="stylesheet" href="/static/lib/layui/css/layui.css" media="all">
+<script src="/static/lib/layui/layui.all.js"></script>
+<script src="/static/admin/index.js"></script>
+</head>
+<body onLoad="">
+<blockquote class="layui-elem-quote">编辑课程信息</blockquote>
+
+<form class="layui-form" action="/teacher/updateCourse" method="POST">
+	<input type="hidden" th:value="${course.courseId}" name="courseId"/>
+   <div class="layui-form-item">
+    <label class="layui-form-label">课程编号</label>
+    <div class="layui-input-inline">
+      <input th:value="${course.courseId}" type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled>
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">课程名称</label>
+    <div class="layui-input-inline">
+      <input type="text" th:value="${course.courseName}" name="courseName" maxlength="10" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="submit" class="layui-btn">更新</button>
+      <button type="button" class="layui-btn layui-btn-primary" onClick="javascript:location.href='/teacher/index'">返回</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  form.render();
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>
+
+
+</body>
+</html>
+
+</body>
+</html>

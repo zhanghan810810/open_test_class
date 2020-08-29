@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>增加课程</title>
+<link rel="stylesheet" href="/static/lib/layui/css/layui.css" media="all">
+<script src="/static/lib/layui/layui.all.js"></script>
+<script src="/static/admin/index.js"></script>
+</head>
+<body onLoad="">
+<blockquote class="layui-elem-quote">增加课程信息</blockquote>
+
+<form class="layui-form" action="/teacher/saveCourse" method="POST">
+   <div class="layui-form-item">
+    <label class="layui-form-label">课程名称</label>
+    <div class="layui-input-inline">
+      <input type="text" name="courseName" required lay-verify="required" maxlength="10" placeholder="请输入" autocomplete="off" class="layui-input" >
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="submit" class="layui-btn">提交</button>
+      <button class="layui-btn" onClick="javascript:location.href='/teacher/index'">返回</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  form.render();
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>
+
+
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>修改用户</title>
+<link rel="stylesheet" href="/static/lib/layui/css/layui.css" media="all">
+<script src="/static/lib/layui/layui.all.js"></script>
+<script src="/static/admin/index.js"></script>
+</head>
+<body onLoad="">
+<blockquote class="layui-elem-quote">编辑用户信息</blockquote>
+
+<form class="layui-form" action="/admin/updateUser" method="POST">
+   <input type="hidden" th:value="${loginUser.userId}" name="userId"/>
+   <div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-inline">
+      <input th:value="${loginUser.userId}" type="text" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" disabled>
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">姓名</label>
+    <div class="layui-input-inline">
+      <input type="text" th:value="${loginUser.userName}" name="userName" required lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-inline">
+      <input type="password" name="passwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">密码确认</label>
+    <div class="layui-input-inline">
+      <input type="password" name="passwd2" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux"></div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">角色</label>
+    <div class="layui-input-inline">
+      <select name="userRole" lay-verify="required" disabled>
+      
+        <option value="TEACHER" th:selected="${loginUser.userRole} eq 'TEACHER'">教师</option>
+        <option value="STUDENT" th:selected="${loginUser.userRole} eq 'STUDENT'">学生</option>
+        <option value="ADMIN" th:selected="${loginUser.userRole} eq 'ADMIN'">管理员</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="submit" class="layui-btn">更新</button>
+      <button type="button" class="layui-btn layui-btn-primary" onClick="javascript:location.href='/admin/index'">返回</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form;
+  form.render();
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    layer.msg(JSON.stringify(data.field));
+    return false;
+  });
+});
+</script>
+
+
+</body>
+</html>
+
+</body>
+</html>

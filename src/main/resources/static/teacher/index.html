@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>课程管理</title>
+<link rel="stylesheet" href="/static/lib/layui/css/layui.css" media="all">
+<script src="/static/lib/layui/layui.all.js"></script>
+<script src="/static/teacher/index.js"></script>
+</head>
+<body>
+<blockquote class="layui-elem-quote">课程管理，当前用户[[${user.Username}]]</blockquote>
+	<table class="layui-table" style="padding-top: 20px;table-layout:fixed;width: 80%" >
+		<thead>
+			<tr>
+				<th>课程编号</th>
+				<th>课程名称</th>
+				<th>订阅数量</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="course,infoStat : ${courses}">
+				<td th:text="${course.courseId}"></td>
+				<td th:text="${course.courseName}"></td>
+				<td th:text="${course.subCnt}"></td>
+				<td>
+				<button th:onclick="[(${'editCourse(''' + course.courseId + ''')'})]">编辑</button>
+				<button th:onclick="[(${'delCourse(''' + course.courseId + ''')'})]">删除</button>
+				</td>
+				
+			</tr>
+
+		</tbody>
+	</table>
+<button type="button" class="layui-btn layui-btn-primary" onClick="javascript:location.href='/teacher/addCourse'">添加课程</button>
+<button type="button" class="layui-btn layui-btn-primary" onClick="javascript:location.href='/logout'">注销当前用户</button>
+</body>
+</html>
