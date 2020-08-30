@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -38,20 +40,20 @@ public class Subscribe {
 	/*
 	 * 课程id
 	 */
-	@Column(name="course_id")
-	private String courseId;
+//	@Column(name="course_id")
+//	private String courseId;
 	
-//	@ManyToOne
- //   @JoinColumn(name="course_id")
- //   private Course course;
+	@ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
 
 	@Override
 	public String toString() {
 		final StringBuffer sb = new StringBuffer("Subscribe{");
 		sb.append("subscribeId=").append(subscribeId);
-		sb.append(", courseId='").append(courseId).append('\'');
+//		sb.append(", courseId='").append(courseId).append('\'');
 		sb.append(", studentId=").append(studentId);
-//		sb.append(", course=").append(course);
+		sb.append(", course=").append(course);
 		sb.append('}');
 		return sb.toString();
 	}

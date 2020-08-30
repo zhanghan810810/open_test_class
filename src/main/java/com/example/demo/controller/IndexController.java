@@ -30,7 +30,7 @@ public class IndexController extends BaseController{
 	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
+		request.setAttribute("user", user);
 
 		for(GrantedAuthority authority : user.getAuthorities()) {
 			
@@ -45,6 +45,5 @@ public class IndexController extends BaseController{
 		throw new RuntimeException("用户角色错误");
 
 	}
-	
 	
 }

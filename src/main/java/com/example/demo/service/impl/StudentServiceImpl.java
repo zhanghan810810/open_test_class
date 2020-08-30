@@ -3,9 +3,7 @@ package com.example.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.CourseRepository;
 import com.example.demo.dao.SubscribeRepository;
-import com.example.demo.entry.Course;
 import com.example.demo.entry.Subscribe;
 import com.example.demo.service.StudentService;
 
@@ -13,9 +11,7 @@ import com.example.demo.service.StudentService;
 @Service
 public class StudentServiceImpl implements StudentService{
 
-	@Autowired
-	private CourseRepository courseRepository;
-	
+
 	@Autowired
 	private SubscribeRepository subscribeRepository;
 	
@@ -32,26 +28,21 @@ public class StudentServiceImpl implements StudentService{
 	
 	public Subscribe findByCourseIdAndStudentId(String courseId,String studentId) {
 		
-		return subscribeRepository.findByCourseIdAndStudentId(courseId,studentId);
+		return subscribeRepository.findByCourseCourseIdAndStudentId(courseId,studentId);
 	}
 	
 
 	public void subscribe(Subscribe subscribe) {
 		
-		Course course = courseRepository.findById(subscribe.getCourseId()).orElse(null);
-		course.setSubCnt(course.getSubCnt() + 1);
-		
+		subscribeRepository.addSubCntByCoursedId(subscribe.getCourse().getCourseId());
 		subscribeRepository.save(subscribe);
-		courseRepository.save(course);
 		
 	}
 	
 
 	public void unsubscribe(Subscribe subscribe) {
-		Course course = courseRepository.findById(subscribe.getCourseId()).orElse(null);
-		course.setSubCnt(course.getSubCnt() - 1);
-		
+
+		subscribeRepository.subSubCntByCoursedId(subscribe.getCourse().getCourseId());
 		subscribeRepository.delete(subscribe);
-		courseRepository.save(course);
 	}
 }

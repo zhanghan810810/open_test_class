@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -70,16 +71,23 @@ public class AdminController extends BaseController{
 	 */
 	@RequestMapping(value = "/admin/updateUser", method = RequestMethod.POST)
 	public String updateUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
 		String passwd = request.getParameter("passwd");
 		String passwd2 = request.getParameter("passwd2");
 		
+		String editUrl = ViewConstant.ADMIN_URL_EDITUSER + "?userId=" + userId;
+		
+		if(Strings.isEmpty(userName) || userName.length() > 10)
+			return this.redirect(request,response,"用户姓名不合法",editUrl);
+		
+	
+		
 		LoginUser loginUser = adminService.findById(userId);
 		
 		if(loginUser == null)
-			return this.redirect(request,response,"用户不存在",ViewConstant.ADMIN_URL_EDITUSER + "?userId=" + userId);
+			return this.redirect(request,response,"用户不存在",editUrl);
 		
 		if(loginUser != null)
 			request.setAttribute("loginUser", loginUser);
@@ -96,11 +104,11 @@ public class AdminController extends BaseController{
 					loginUser.setUserPasswd(passwd);
 				}else {
 					
-					return this.redirect(request,response,"密码输入不一致",ViewConstant.ADMIN_URL_EDITUSER + "?userId=" + userId);
+					return this.redirect(request,response,"密码输入不一致",editUrl);
 				}
 			}else {
 				
-				return this.redirect(request,response,"确认密码不能为空",ViewConstant.ADMIN_URL_EDITUSER + "?userId=" + userId);
+				return this.redirect(request,response,"确认密码不能为空",editUrl);
 			}
 		}
 		
@@ -114,11 +122,11 @@ public class AdminController extends BaseController{
 					loginUser.setUserPasswd(passwd);	
 				}else {
 					
-					return this.redirect(request,response,"密码输入不一致",ViewConstant.ADMIN_URL_EDITUSER + "?userId="+userId);
+					return this.redirect(request,response,"密码输入不一致",editUrl);
 				}
 			}else {
 				
-				return this.redirect(request,response,"密码不能为空",ViewConstant.ADMIN_URL_EDITUSER + "?userId="+userId);
+				return this.redirect(request,response,"密码不能为空",editUrl);
 			}
 		}
 		
@@ -151,6 +159,14 @@ public class AdminController extends BaseController{
 		String passwd = request.getParameter("passwd");
 		String passwd2 = request.getParameter("passwd2");
 		String userRole = request.getParameter("userRole");
+		
+		
+		if(Strings.isEmpty(userId) || userId.length() > 10)
+			return this.redirect(request,response,"用户名不合法",ViewConstant.ADMIN_URL_ADDUSER);
+		
+		if(Strings.isEmpty(userName) || userName.length() > 10)
+			return this.redirect(request,response,"用户姓名不合法",ViewConstant.ADMIN_URL_ADDUSER);
+		
 		
 		LoginUser loginUser = adminService.findById(userId);
 		

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -75,6 +76,9 @@ public class TeacherController extends BaseController{
 		String courseId = request.getParameter("courseId");
 		String courseName = request.getParameter("courseName");
 		
+		if(Strings.isEmpty(courseName) || courseName.length() > 10)
+			return this.redirect(request,response,"课程名称不合法",ViewConstant.TEACHER_URL_EDITCOURSE + "?courseId="+courseId);
+		
 		Course course = teacherService.findById(courseId);
 		
 		if(course == null)
@@ -113,6 +117,10 @@ public class TeacherController extends BaseController{
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		String courseName = request.getParameter("courseName");
+		
+		if(Strings.isEmpty(courseName) || courseName.length() > 10)
+			return this.redirect(request,response,"课程名称不合法",ViewConstant.TEACHER_URL_ADDCOURSE);
+		
 		
 		Course course = teacherService.findByCourseNameAndTeacherIdAndCourseStatus(courseName,user.getUsername(),true);
 		

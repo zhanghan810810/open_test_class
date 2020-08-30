@@ -17,7 +17,7 @@ public interface CourseRepository extends JpaRepository<Course,String>{
 	@Query("SELECT NEW com.example.demo.vo.student.FindCourseVo(s.courseId,s.courseName,s.teacherId,l.userName,u.subscribeId) "
 			+ "FROM Course s "
 			+ "INNER JOIN LoginUser l ON s.teacherId = l.userId "
-			+ "LEFT JOIN Subscribe u ON s.courseId = u.courseId AND u.studentId = ?1 "
+			+ "LEFT JOIN Subscribe u ON s.courseId = u.course AND u.studentId = ?1 "
 			+ "WHERE s.courseStatus = 1")
 	List<FindCourseVo> findCoursesAndIsSubscribed(String studentId);
 }

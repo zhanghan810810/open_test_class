@@ -64,17 +64,18 @@ public class StudentController extends BaseController{
 		String courseId = request.getParameter("courseId");
 		
 		Subscribe subscribe = studentService.findByCourseIdAndStudentId(courseId,user.getUsername());
-		Course course = teacherService.findById(courseId);
-
-		if(course == null)
-			return this.redirect(request,response,"该课程信息不存在",ViewConstant.STUDENT_URL_INDEX);
 		
 		if(subscribe != null)
 			return this.redirect(request,response,"已经订阅了该课程",ViewConstant.STUDENT_URL_INDEX);
 		
+		Course course = teacherService.findById(courseId);
+
+		if(course == null)
+			return this.redirect(request,response,"该课程信息不存在",ViewConstant.STUDENT_URL_INDEX);
+
 		
 		subscribe = new Subscribe();
-		subscribe.setCourseId(courseId);
+		subscribe.setCourse(course);
 		subscribe.setStudentId(user.getUsername());
 	
 		studentService.subscribe(subscribe);
@@ -94,14 +95,15 @@ public class StudentController extends BaseController{
 		String courseId = request.getParameter("courseId");
 		
 		Subscribe subscribe = studentService.findByCourseIdAndStudentId(courseId,user.getUsername());
-		Course course = teacherService.findById(courseId);
-		
-		if(course == null)
-			return this.redirect(request,response,"该课程信息不存在",ViewConstant.STUDENT_URL_INDEX);
 		
 		if(subscribe == null)
 			return this.redirect(request,response,"未找到订阅信息",ViewConstant.STUDENT_URL_INDEX);
 		
+		Course course = subscribe.getCourse();
+		
+		if(course == null)
+			return this.redirect(request,response,"该课程信息不存在",ViewConstant.STUDENT_URL_INDEX);
+
 		studentService.unsubscribe(subscribe);
 		
 		return this.redirect(request,response,"订阅已取消",ViewConstant.STUDENT_URL_INDEX);

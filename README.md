@@ -4,6 +4,15 @@
 
 ------
 
+## 任务完成说明
+
+* 管理员账号：Admin/Admin
+* 预设教师账号：teacher1/123456
+* 预设学生账号：student1/123456
+
+项目启动后，系统首页http://127.0.0.1:8080，使用以上账号登录即可（也可使用管理员登陆后建立账号）
+
+
 ## 任务要求
 
 > **特别注意**：请于完成后，将项目源码更新至候选者您本人的Github，在您项目的**Settings**页面，例如本项目为此[链接](https://github.com/alaahong/open_test_class/settings/access) ，将您的项目设置为**Private Repository**以免借阅, 并于**Manage access**邀请**alaahong**作为协作者(collaborator)后，发起[issue](https://github.com/alaahong/open_test_class/issues)声明您的项目链接，并最终反馈给HR/Vendor/猎头等渠道 
