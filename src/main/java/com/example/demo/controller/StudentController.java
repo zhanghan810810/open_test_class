@@ -36,8 +36,11 @@ public class StudentController extends BaseController{
 	@Autowired
 	private TeacherService teacherService;
 	
-	/*
-	 * 首页
+	/**
+	 * @description 首页
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/student/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -53,8 +56,11 @@ public class StudentController extends BaseController{
 
 	}
 	
-	/*
-	 * 订阅
+	/**
+	 * @description 订阅
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/student/subscribe", method = RequestMethod.POST)
 	public String subscribe(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -84,8 +90,11 @@ public class StudentController extends BaseController{
 
 	}
 	
-	/*
-	 * 取消订阅
+	/**
+	 * @description 取消订阅
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/student/unsubscribe", method = RequestMethod.POST)
 	public String unsubscribe(HttpServletRequest request, HttpServletResponse response) throws Exception {

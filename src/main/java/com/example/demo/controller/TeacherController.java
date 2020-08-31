@@ -33,8 +33,11 @@ public class TeacherController extends BaseController{
 	private TeacherService teacherService;
 	
 
-	/*
-	 * 首页
+	/**
+	 * @description 首页
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -50,8 +53,11 @@ public class TeacherController extends BaseController{
 
 	}
 	
-	/*
-	 * 编辑课程
+	/**
+	 * @description 编辑课程
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/editCourse", method = RequestMethod.GET)
 	public String editCourse(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -67,8 +73,11 @@ public class TeacherController extends BaseController{
 
 	}
 	
-	/*
-	 * 更新课程
+	/**
+	 * @description 更新课程
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/updateCourse", method = RequestMethod.POST)
 	public String updateCourse(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -98,8 +107,11 @@ public class TeacherController extends BaseController{
 
 	}
 	
-	/*
-	 * 添加课程
+	/**
+	 * @description 添加课程
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/addCourse", method = RequestMethod.GET)
 	public String addCourse(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -108,8 +120,11 @@ public class TeacherController extends BaseController{
 
 	}
 	
-	/*
-	 * 添加保存课程
+	/**
+	 * @description 保存课程
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/saveCourse", method = RequestMethod.POST)
 	public String saveCourse(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -141,8 +156,11 @@ public class TeacherController extends BaseController{
 
 	}
 	
-	/*
-	 * 删除课程
+	/**
+	 * @description 删除课程
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/teacher/delCourse", method = RequestMethod.POST)
 	public String delCourse(HttpServletRequest request, HttpServletResponse response) throws Exception {

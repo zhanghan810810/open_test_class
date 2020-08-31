@@ -21,9 +21,9 @@ import com.example.demo.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author: zhh
- * @description: 管理员控制器
- * @data: 2020-08-29
+ * @author zhh
+ * @description 管理员控制器
+ * @data 2020-08-29
  **/
 @Slf4j
 @Controller
@@ -32,11 +32,14 @@ public class AdminController extends BaseController{
 	@Autowired
 	private AdminService adminService;
 	
-	/*
-	 * 首页
+	/**
+	 * @description 首页
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/index", method = RequestMethod.GET)
-	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String index(HttpServletRequest request, HttpServletResponse response)  {
 
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		request.setAttribute("user", user);
@@ -49,11 +52,14 @@ public class AdminController extends BaseController{
 
 	}
 	
-	/*
-	 * 编辑用户
+	/**
+	 * @description 编辑用户页面
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/editUser", method = RequestMethod.GET)
-	public String editUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String editUser(HttpServletRequest request, HttpServletResponse response)  {
 
 		String userId = request.getParameter("userId");
 		
@@ -66,11 +72,14 @@ public class AdminController extends BaseController{
 
 	}
 	
-	/*
-	 * 更新用户
+	/**
+	 * @description 更新用户
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/updateUser", method = RequestMethod.POST)
-	public String updateUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String updateUser(HttpServletRequest request, HttpServletResponse response)  {
 		
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
@@ -138,21 +147,27 @@ public class AdminController extends BaseController{
 
 	}
 	
-	/*
-	 * 增加用户
+	/**
+	 * @description 增加用户
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/addUser", method = RequestMethod.GET)
-	public String addUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String addUser(HttpServletRequest request, HttpServletResponse response)  {
 
 		return ViewConstant.ADMIN_VIEW_ADDUSER;
 
 	}
 	
-	/*
-	 * 保存用户
+	/**
+	 * @description 保存用户
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/saveUser", method = RequestMethod.POST)
-	public String saveUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String saveUser(HttpServletRequest request, HttpServletResponse response)  {
 
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
@@ -198,11 +213,14 @@ public class AdminController extends BaseController{
 
 	}
 	
-	/*
-	 * 删除用户
+	/**
+	 * @description 删除用户
+	 * @param request
+	 * @param response
+	 * @return
 	 */
 	@RequestMapping(value = "/admin/delUser", method = RequestMethod.POST)
-	public String delUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String delUser(HttpServletRequest request, HttpServletResponse response)  {
 
 		String userId = request.getParameter("userId");
 		

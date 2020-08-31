@@ -14,7 +14,7 @@ import com.example.demo.entry.LoginUser;
 
 /**
  * @author: zhh
- * @description: 客户化登录
+ * @description: 客户化登录逻辑
  * @data: 2020-08-29
  **/
 @Service

@@ -25,7 +25,12 @@ import lombok.extern.slf4j.Slf4j;
 public class IndexController extends BaseController{
 
 	
-
+	/**
+	 * @description 首页
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 

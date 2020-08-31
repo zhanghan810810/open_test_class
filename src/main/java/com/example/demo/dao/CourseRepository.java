@@ -8,6 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.demo.entry.Course;
 import com.example.demo.vo.student.FindCourseVo;
 
+/**
+ * @author: zhh
+ * @description: 课程dao
+ * @data: 2020-08-29
+ **/
 public interface CourseRepository extends JpaRepository<Course,String>{
 
 	public Course findByCourseNameAndTeacherIdAndCourseStatus(String courseName,String teacherId,Boolean courseStatus);
